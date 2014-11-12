@@ -1,0 +1,98 @@
+int side = 1;
+
+void setup() {
+  background(0);
+  //strokeWeight(3);
+  stroke(255);
+  size(700, 700);
+  frameRate(1);
+}
+
+boolean direction_y = true;
+
+void draw() {
+  if (side == 1) {
+    int x = int(random(width));
+    int y = 0;
+    for (; y <= height && (get(x,y+1) == g.backgroundColor); y++) {
+      point(x,y);
+    }
+    
+    if (get(x+1,y) == g.backgroundColor){
+      for (; y >= 0 && x <= width && (get(x+1,y-1) == g.backgroundColor); y--){
+      x = x+1;
+      point(x,y);
+    }
+    }else {
+    for (; y >= 0 && x >= 0 && (get(x-1,y-1) == g.backgroundColor); y--){
+      x = x-1;
+      point(x,y);
+    }
+    }
+  } 
+  
+  else if (side == 2) {
+    int y = int(random(height));
+    int x = width;
+    for (; x >= 0 && (get(x-1,y) == g.backgroundColor); x--) {
+      point(x,y);
+    }
+    
+    if (get(x,y+1) == g.backgroundColor){
+      for (; y <= height && x <= width && (get(x+1,y+1) == g.backgroundColor); y++){
+      x = x+1;
+      point(x,y);
+    }
+    }else {
+    for (; y >= 0 && x <= width && (get(x+1,y-1) == g.backgroundColor); y--){
+      x = x+1;
+      point(x,y);
+    }
+    }
+  } 
+  
+  else if (side == 3) {
+    int x = int(random(width));
+    int y = height;
+    for (; y >= 0 && (get(x,y-1) == g.backgroundColor); y--) {
+      point(x,y);
+    }
+    
+    if (get(x-1,y) == g.backgroundColor){
+      for (; y <= height && x >= 0 && (get(x-1,y+1) == g.backgroundColor); y++){
+      x = x-1;
+      point(x,y);
+    }
+    }else {
+    for (; y <= height && x <= width && (get(x+1,y+1) == g.backgroundColor); y++){
+      x = x+1;
+      point(x,y);
+    }
+    }
+  } 
+  
+  else if (side == 4) {
+    int y = int(random(height));
+    int x = 0;
+    for (; x <= width && (get(x+1,y) == g.backgroundColor); x++) {
+      point(x,y);
+    }
+    
+    if (get(x,y-1) == g.backgroundColor){
+      for (; y >= 0 && x >= 0 && (get(x-1,y-1) == g.backgroundColor); y--){
+      x = x-1;
+      point(x,y);
+    }
+    }else {
+    for (; y <= height && x >= 0 && (get(x-1,y+1) == g.backgroundColor); y++){
+      x = x-1;
+      point(x,y);
+    }
+    }
+  }
+  
+  side = side + 1;
+  if (side == 5){
+  side = 1;
+  }
+}
